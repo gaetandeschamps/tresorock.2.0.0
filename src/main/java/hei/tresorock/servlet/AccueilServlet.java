@@ -33,6 +33,6 @@ public class AccueilServlet extends HttpServlet {
 
         templateEngine.process("accueil", context, resp.getWriter());
 
-        //FUCK THIS DAY
+        //FUCK THIS DAY -- oh yeah
     }
 }
