@@ -1,0 +1,40 @@
+@font-face {
+	font-family: 'Geometria-Light';
+	src: url('../fonts/Geometria-Light.otf');
+}
+*{
+	font-family: "Geometria-Light";
+}
+#tresorock{
+	font-family:"Geometria-Light";
+	font-size: 6em;
+}
+
+
+#txt{
+	font-size:150px; 
+	color: white; 
+	margin-left: 0.5em;
+}
+
+#date{
+	font-size:150px; 
+	color: white; 
+	margin-left: 0.5em;
+}
+#btnTEA{
+	width: 60%; 
+	margin-top: 1em; 
+	font-size: 3em
+}
+#btnADMIN{
+	background-color: #0099ff; 
+	width: 60%; 
+	margin-top: 0.5em; 
+	font-size: 3em
+}
+#logoRockGrand{
+	width: 50%; 
+	margin-top: 50px; 
+	margin-bottom: 10em;
+}

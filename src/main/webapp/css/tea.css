@@ -1,0 +1,74 @@
+@font-face {
+	font-family: 'Geometria-Light';
+	src: url('../fonts/Geometria-Light.otf');
+}
+*{
+	font-family: "Geometria-Light";
+}
+#tresorock{
+	font-family:"Geometria-Light";
+	font-size: 6em;
+}
+
+
+#txt{
+	font-size:150px; 
+	color: white; 
+	margin-left: 0.5em;
+}
+
+#date{
+	font-size:150px; 
+	color: white; 
+	margin-left: 0.5em;
+}
+.fixed-left{
+	width: 20%; 
+	margin-top: 50px;
+}
+
+#titre{
+	margin-top: -10em;
+}
+
+#logoRock{
+	width: 4%; 
+	margin-right: 100px; 
+	margin-top: -100px;
+}
+#ongletTEA{
+	margin-top: 1em;
+}
+#reglesTEA{
+	margin-top: 4em;
+}
+#cotisant{
+	display: none;
+	padding:20px;
+	font-size: 20px;
+}
+#couple{
+	padding:20px;
+	font-size: 20px;
+}
+#cotisant2{
+	display: none;
+	padding:20px;
+	font-size: 20px;
+}
+#couple2{
+	padding:20px;
+	font-size: 20px;
+}
+#valider{
+	padding-top: 30px;
+}
+#valider2{
+	padding-top: 30px;
+}
+#menu1 h3{
+	padding-bottom: 20px;
+}
+#footer{
+	style:"padding-bottom: 10px";
+}

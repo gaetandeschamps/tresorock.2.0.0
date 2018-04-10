@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap-social.css"/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/admin.css">
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../js/else.js"></script>
+
+		<title>Trésorock - Mode ADMIN</title>
+  		<meta charset="utf-8"/>
+	</head>
+
+	<body onload="startTime();" class="bg-secondary">
+		<div id="txt"></div>
+		<div id="date"></div>
+		<img class="fixed-left" src="../images/logorockheinoir.png">
+
+		<div>
+			<h1 class="text-center text-white" id="titre">TRÉSOROCK - Administrateur</h1>
+		</div>	
+		<a href="../accueil"><img src="../images/accueil.png" id="logoRock" class="rounded float-right"></a>
+		<a href="deconnexion"><button type="button" class="btn btn-warning float-right" id="deconnexion">Deconnexion</button></a>
+		<div>
+			<div class="container col-sm-6 col-sm-push-3">
+				<ul class="nav nav-pills" id="ongletADMIN">
+    				<li class="active text-center center-block"><a data-toggle="pill" href="#home" class="text-dark">Accueil Admin</a></li>
+				    <li class="text-center center-block text-white"><a data-toggle="pill" href="#menu1" class="text-dark">Créer une Soirée</a></li>
+				    <li class="text-center center-block"><a data-toggle="pill" href="#menu2" class="text-dark">Consulter les Soirées</a></li>
+				    <li class="text-center center-block"><a data-toggle="pill" href="#menu3" class="text-dark">Historique des Soirées</a></li>
+				</ul>
+
+				<div class="tab-content text-white" id="reglesADMIN">
+					<div id="home" class="tab-pane fade in active">
+				    	<h3>MODE ADMIN</h3>
+				    	<p>Pour créer une nouvelle soirée, sélectionner l'onglet dédié.</p>				    	
+				    	<p>Pour consulter la liste des soirées existantes du Rock, sélectionner l'onglet dédié.</p>
+				    	<p>Pour afficher l'historique de toutes les soirées du Rock, sélectionner l'onglet dédié.</p>
+				    </div>
+				    <div id="menu1" class="tab-pane fade">
+				    	<h3>MODE ADMIN</h3>
+				    	<center>
+					    	<form method="post" id="formulaireCreation" class="input-group center-block text-center">
+						    	<div class="input-group">
+							 	    <span class="input-group-addon" for="dateSoiree">Date</span>
+							 		<input class="form-control" type="date" name="dateSoiree" id="example-date-input" onchange="CreerEvenement();">
+							  	</div>
+							  	<div class="input-group col-lg-offset-4" id="suite">
+								    <span class="input-group-addon" id="span" for="recetteCaisse">Recette Caisse</span>
+								    <input type="number" class="form-control" placeholder="0.00 €" name="recetteCaisse" id="recetteCaisse">
+								</div>
+								<div class="input-group" id="suite2">
+								    <span class="input-group-addon" id="span">Recette Totale</span>
+								    <input type="number" class="form-control" placeholder="0.00 €">
+								</div>
+								<div class="input-group" id="suite3">
+								    <span class="input-group-addon" id="span">Erreur Caisse</span>
+								    <input type="number" class="form-control" placeholder="0.00 €" name="erreurCaisse">
+								</div>
+								<div class="input-group" id="suite4">
+								    <span class="input-group-addon" id="span">Nombre de personnes venues à l'évènement</span>
+								    <input type="number" class="form-control" placeholder="0 personnes">
+								</div>
+								<div class="input-group" id="suite5">
+								    <span class="input-group-addon" id="span">Nombre d'abonnés venus à l'évènement</span>
+								    <input type="number" class="form-control" placeholder="0 abonnés">
+								</div>
+								<div class="input-group" id="suite6">
+								    <span class="input-group-addon" id="span" for="themeSoiree">Thème de l'évènement</span>
+								    <input type="text" class="form-control" placeholder="Thème..." name="themeSoiree" id="themeSoiree">
+								</div>
+								<div id="suite7">
+									<button type="submit" class="btn btn-dark center-block" id="btnValider" onclick="OnClick()">Finaliser</button>
+								</div>
+								
+						</center>
+					  	</form>
+				    </div>
+
+				    <div id="menu2" class="tab-pane fade">
+				    	<h3>MODE ADMIN</h3>
+				    	<p>Pour consulter les soirées passées, merci de cliquer sur la date souhaitée.</p>
+				    	<tr class="custom-select" size="10" th:each="soiree : ${soireesList}">
+				    		<!--rajouter lien sur chacune des dates avec boutons modifier/supprimer-->
+							<td th:text="${soiree.dateSoiree}"></td>
+						</tr>
+					</div>
+
+				    <div id="menu3" class="tab-pane fade">
+				    	<h3>MODE ADMIN</h3>
+				    	<p>Consulter l'historique des soirées.</p>
+				    </div>
+				</div>
+		</div>
+	
+		<footer class="blockquote-footer fixed-bottom text-center">
+			<div id="footer" class="bg-light">
+				<hr>
+				Site Web réalisé par : Gaëtan Deschamps & Clément Georjon - © Copyright
+				<a class="btn btn-social-icon center-block" href="https://www.facebook.com/rock.hei.lille">
+    			<i class="fa fa-facebook"></i>
+  				</a>
+			</div>
+		</footer>
+	</body>
+</html>
