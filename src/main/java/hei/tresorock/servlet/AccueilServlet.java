@@ -32,5 +32,7 @@ public class AccueilServlet extends HttpServlet {
         templateEngine.setTemplateResolver(templateResolver);
 
         templateEngine.process("accueil", context, resp.getWriter());
+
+        //FUCK THIS DAY
     }
 }
