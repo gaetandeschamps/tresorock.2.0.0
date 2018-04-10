@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/tea.css">
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../js/else.js"></script>
+		<title>Trésorock - Mode TEA</title>
+  		<meta charset="utf-8"/>
+	</head>
+
+	<body onload="startTime();" class="bg-info">
+		<div id="txt"></div>
+		<div id="date"></div>
+		<img class="fixed-left" src="../../images/logorockheinoir.png">
+
+		<div>
+			<h1 class="text-center text-white" id="titre">TRÉSOROCK - TEA</h1>
+		</div>	
+		
+
+		<a href="accueil"><img src="../../images/accueil.png" class="rounded float-right" id="logoRock"></a>
+
+		<div>
+			<div class="container col-sm-6 col-sm-push-3">
+				<ul class="nav nav-pills" id="ongletTEA">
+    				<li class="active text-center center-block"><a data-toggle="pill" href="#home" class="text-dark">Accueil TEA</a></li>
+				    <li class="text-center center-block text-white"><a data-toggle="pill" href="#menu1" class="text-dark">NORMAL</a></li>
+				    <li class="text-center center-block"><a data-toggle="pill" href="#menu2" class="text-dark">ABONNÉ</a></li>
+				</ul>
+
+				<div class="tab-content text-white" id="reglesTEA">
+					<div id="home" class="tab-pane fade in active">
+				    	<h3>MODE TEA</h3>
+				    	<p>Pour ajouter ou sélectionner un client non abonné, cliquez l'onglet dédié.</p>				    	
+				    	<p>Pour ajouter ou sélectionner un client abonné, cliquez sur l'onglet dédié.</p>
+				    </div>
+				    <!-- ******* MENU 1 ****** -->
+				    <div id="menu1" class="tab-pane fade">
+				    	<h3>MODE TEA - <i>Ajout d'un client "Normal"</i></h3>
+				    	<form method="post">
+						  <div class="form-group row">
+						    <label class="col-sm-2 col-form-label">Nom</label>
+						    <div class="col-sm-10">
+						      <input required name="nomClient" type="text" class="form-control" list="nom" placeholder="Entrez le nom du client...">
+						      <datalist id="nom">
+						      	<!--exemples à modifier en fonction des nouveaux inscrits-->
+						      	<option>Deschamps</option>
+						      	<option>Georjon</option>
+						      </datalist>
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <label class="col-sm-2 col-form-label">Prénom</label>
+						    <div class="col-sm-10">
+						      <input required name="prenomClient" type="text" class="form-control" list="prenom" placeholder="Entrez le prénom du client...">
+						      <datalist id="prenom">
+						      	<option>Gaëtan</option>
+						      	<option>Clément</option>
+						      </datalist>
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <label class="col-sm-2 col-form-label">École</label>
+						    <div class="col-sm-10">
+						      <input required name="ecoleClient" type="text" class="form-control" list="ecole" placeholder="Entrez l'école du client..." oninput="NouveauClientNormal(this);">
+						      <datalist id="ecole">
+						      	<option>HEI</option>
+						      	<option>ISEN</option>
+						      </datalist>
+						    </div>
+						  </div>
+						  <center><div id="cotisant" class="text-center">
+						  	<label class="radio-inline"><input type="radio" name="cotisantClient" value="1">Cotisant</label>
+							<label class="radio-inline"><input type="radio" name="cotisantClient" value="0">Non Cotisant</label>
+						  </div></center>
+						  <div id="couple" class="text-center">
+						  	<label class="radio-inline"><input type="radio" name="optRadioSeulCouple" id="seul" onclick="PrixAPayer();">Seul</label>
+							<label class="radio-inline"><input type="radio" name="optRadioSeulCouple" id="Couple" onclick="PrixAPayer();">Couple</label>
+						  </div>	
+						  <div class="form-group row">
+						    <label class="col-sm-2 col-form-label">Prix à payer (€)</label>
+						    <div class="col-sm-10">
+						      <input required type="text" class="form-control" placeholder="0.00 € " id="montant" name="prixPaye">
+						  </div> 
+						  <div id="valider" class="center-block text-center">
+									<button type="submit" name="statutClient" value="Normal" class="btn btn-dark center-block" id="btnValider" onclick="Valider();">Valider</button>
+								</div>   
+						</form>
+				    </div>
+				</div>
+				    <!-- ****** MENU 2 ****** -->
+
+				    <div id="menu2" class="tab-pane fade">
+				    	<h3 id="titreForm">MODE TEA - <i>Ajout d'un client "Abonné"</i></h3>
+				    	<form method="post">
+				    		<div class="btn-group center-block text-center" role="group" aria-label="Basic example">
+				    		<center>
+							  <button type="button" class="btn btn-secondary" onclick="TypeFormulaireTEA(this);" value="membre" id="membre">Déjà Membre</button>
+							  <button type="button" class="btn btn-secondary" onclick="TypeFormulaireTEA(this);" value="inscription" id="inscription">Inscription</button>
+							  <button type="button" class="btn btn-secondary" onclick="TypeFormulaireTEA(this);" value="ancienMembre" id="ancienMembre">Ancien Membre Commission</button><br><br>
+							</div>
+							</center>	
+							<div id="formulaireClient" class="center-block text-center"></div>
+							<form method="post">
+						  <div class="form-group row">
+						    <label class="col-sm-2 col-form-label">Nom</label>
+						    <div class="col-sm-10">
+						      <input required name="nomClient" type="text" class="form-control" list="nom" placeholder="Entrez le nom du client...">
+						      <datalist id="nom">
+						      	<!--exemples à modifier en fonction des nouveaux inscrits-->
+						      	<option>Deschamps</option>
+						      	<option>Georjon</option>
+						      </datalist>
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <label class="col-sm-2 col-form-label">Prénom</label>
+						    <div class="col-sm-10">
+						      <input name="prenomClient" type="text" class="form-control" list="prenom" placeholder="Entrez le prénom du client..." required>
+						      <datalist id="prenom">
+						      	<option>Gaëtan</option>
+						      	<option>Clément</option>
+						      </datalist>
+						    </div>
+						  </div>
+						  <div class="form-group row">
+						    <label class="col-sm-2 col-form-label">École</label>
+						    <div class="col-sm-10">
+						      <input name="ecoleClient" type="text" class="form-control" list="ecole" placeholder="Entrez l'école du client..." oninput="NouveauClientNormal2(this);" required>
+						      <datalist id="ecole2">
+						      	<option>HEI</option>
+						      	<option>ISEN</option>
+						      </datalist>
+						    </div>
+						  </div>
+						  <center><div id="cotisant2" class="text-center">
+						  	<label class="radio-inline"><input type="radio" name="optRadioCotisant">Cotisant</label>
+							<label class="radio-inline"><input type="radio" name="optRadioCotisant">Non Cotisant</label>
+						  </div></center>
+						  <div id="couple2" class="text-center">
+						  	<label class="radio-inline"><input type="radio" name="optRadioSeulCouple">Seul</label>
+							<label class="radio-inline"><input type="radio" name="optRadioSeulCouple">Couple</label>
+						  </div>	
+						  <div class="form-group row">
+						    <label class="col-sm-2 col-form-label">Prix à payer (€)</label>
+						    <div class="col-sm-10">
+						      <input type="text" class="form-control" placeholder="0.00 €" id="montant2" name="prixPaye">
+						  </div> 
+						  <div id="valider2" class="center-block text-center">
+									<button type="submit" name="statutClient" value="Abonne" class="btn btn-dark center-block" id="btnValider" onclick="Valider();">Valider</button>
+								</div>   
+						</form>
+						</form>
+				    </div>
+				    				  
+				</div>
+			</div>
+		</div>
+
+		<footer class="blockquote-footer fixed-bottom text-center">
+			<div id="footer" class="bg-light">
+				<hr>
+				Site Web réalisé par : Gaëtan Deschamps & Clément Georjon - © Copyright
+				<a class="btn btn-social-icon center-block" href="https://www.facebook.com/rock.hei.lille">
+    			<i class="fa fa-facebook"></i>
+  				</a>
+			</div>
+		</footer>
+	</body>
+</html>
