@@ -101,7 +101,7 @@ public class ListeSoiree {
     //méthodes liées au traitement des informations des participations des clients aux soirées
     public List<Participe> listParticipe() {    return participeDao.listParticipe();    }
 
-    public Participe getParticipeDao(Integer idParticipe) { return participeDao.getParticipe(idParticipe);   }
+    public Participe getParticipeDao(Integer idSoiree,Integer idClient) { return participeDao.getParticipe(idSoiree,idClient);   }
 
     public Participe addParticipe(Participe participe) {
         if (participe == null) {

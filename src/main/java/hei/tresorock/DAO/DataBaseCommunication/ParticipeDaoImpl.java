@@ -41,12 +41,12 @@ public class ParticipeDaoImpl implements ParticipeDao {
     }
     /**
      * Cette méthode retourne un objet Participe correspondant à l'identifiant unique de la participations, passé en paramètre
-     *
-     * @param idParticipe de la participation recherchée
+     * @param idClient du client à ajouter
+     * @param idSoiree de la soirée à ajouter
      * @return null
      */
     @Override
-    public Participe getParticipe(Integer idParticipe) {
+    public Participe getParticipe(Integer idSoiree, Integer idClient) {
         String query = "SELECT * FROM Participe";
         try (
                 Connection connection = DataBaseProvider.getdataBase().getConnection();
