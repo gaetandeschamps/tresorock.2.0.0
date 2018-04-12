@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -29,9 +29,11 @@
     				<li class="active text-center center-block"><a data-toggle="pill" href="#home" class="text-dark">Accueil TEA</a></li>
 				    <li class="text-center center-block text-white"><a data-toggle="pill" href="#menu1" class="text-dark">NORMAL</a></li>
 				    <li class="text-center center-block"><a data-toggle="pill" href="#menu2" class="text-dark">ABONNÉ</a></li>
-				</ul>
+					<li class="text-center center-block"><a data-toggle="pill" href="#menu3" class="text-dark">LISTE DES CLIENTS</a></li>
 
+				</ul>
 				<div class="tab-content text-white" id="reglesTEA">
+					<!-- ******* MENU ****** -->
 					<div id="home" class="tab-pane fade in active">
 				    	<h3>MODE TEA</h3>
 				    	<p>Pour ajouter ou sélectionner un client non abonné, cliquez l'onglet dédié.</p>				    	
@@ -87,12 +89,11 @@
 						  </div> 
 						  <div id="valider" class="center-block text-center">
 									<button type="submit" name="statutClient" value="Normal" class="btn btn-dark center-block" id="btnValider" onclick="Valider();">Valider</button>
-								</div>   
+								</div>
+						  </div>
 						</form>
 				    </div>
-				</div>
 				    <!-- ****** MENU 2 ****** -->
-
 				    <div id="menu2" class="tab-pane fade">
 				    	<h3 id="titreForm">MODE TEA - <i>Ajout d'un client "Abonné"</i></h3>
 				    	<form method="post">
@@ -151,11 +152,20 @@
 						  </div> 
 						  <div id="valider2" class="center-block text-center">
 									<button type="submit" name="statutClient" value="Abonne" class="btn btn-dark center-block" id="btnValider" onclick="Valider();">Valider</button>
-								</div>   
+								</div>
+						  </div>
 						</form>
 						</form>
 				    </div>
-				    				  
+					<!-- ******* MENU 3 ****** -->
+					<div id="menu3" class="tab-pane fade">
+						<h3>MODE TEA - Liste des clients du Rock'HEI</h3>
+						<select class="custom-select" size="1" th:each="client : ${clientsList}">
+							<option style="margin-top:1em; font-weight: bold; font-size: large" th:text="${client.nomClient + ' ' +
+							client.prenomClient + ' ' + '- ' + client.ecoleClient + ' '}"></option>
+							<option style="margin-bottom: 0.5em; font-weight: bold; font-size: large" th:text="${client.statutClient}"></option>
+						</select>
+					</div>
 				</div>
 			</div>
 		</div>
