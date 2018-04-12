@@ -176,6 +176,15 @@ function affichageSoireeEnCours() {
 
         CreerEvenement();
 
+        //maj de la recette de la caisse
+        document.getElementById("recetteCaisse").setAttribute("value", sec.recetteCaisse);
+
+        //maj de l'erreur de caisse
+        document.getElementById("erreurCaisse").setAttribute("value", sec.erreurCaisse);
+
+        //maj du nb de personnes venues
+        document.getElementById("erreurCaisse").setAttribute("value", sec.erreurCaisse);
+
 
 
 
