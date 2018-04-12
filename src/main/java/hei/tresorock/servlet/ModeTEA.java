@@ -2,6 +2,7 @@ package hei.tresorock.servlet;
 
 import hei.tresorock.entities.Client;
 import hei.tresorock.entities.Participe;
+import hei.tresorock.entities.Soiree;
 import hei.tresorock.managers.ListeSoiree;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.format.DateTimeParseException;
+import java.util.List;
 
 /**
  * Classe permettant d'accéder à la partie TEA du site.
@@ -36,6 +38,9 @@ public class ModeTEA extends HttpServlet {
         templateResolver.setSuffix(".html");
 
         WebContext context = new WebContext(req,resp,req.getServletContext());
+
+        List<Client> clients = ListeSoiree.getInstance().listClient();
+        context.setVariable("clientsList", clients);
 
         TemplateEngine templateEngine = new TemplateEngine();
         templateEngine.setTemplateResolver(templateResolver);

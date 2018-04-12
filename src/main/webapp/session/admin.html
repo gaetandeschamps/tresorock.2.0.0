@@ -83,9 +83,9 @@
 				    	<h3>MODE ADMIN</h3>
 						<p>Voici le résumé des soirées passées.</p>
 						<p>Si vous souhaitez rechercher une soirée en particulier, effectuer une recherche sur la page à l'aide du raccourci Ctrl + F (Windows) ou Cmd + F (Mac). </p>
-				    	<select class="custom-select" size="10" th:each="soiree : ${soireesList}">
+				    	<select style="padding-bottom: 6em;" class="custom-select" size="3" th:each="soiree : ${soireesList}">
 				    		<!--rajouter lien sur chacune des dates avec boutons modifier/supprimer-->
-							<option style="margin-top:3em; margin-bottom: 0.5em; font-weight: bold; font-size: large" th:text="${'DATE SOIREE : ' + soiree.dateSoiree}"></option>
+							<option style="margin-top:1em; margin-bottom: 0.5em; font-weight: bold; font-size: large" th:text="${'DATE SOIREE : ' + soiree.dateSoiree}"></option>
 
 							<option style="margin-bottom: 0.5em; font-weight: bold; font-size: large" th:text="${'Recette Caisse : ' + soiree.recetteCaisse}">Recette de la Caisse :</option>
 
