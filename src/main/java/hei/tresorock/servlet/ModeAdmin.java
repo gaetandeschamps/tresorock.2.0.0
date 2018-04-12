@@ -88,5 +88,7 @@ public class ModeAdmin extends HttpServlet {
         }
         //redirection page préc.
         resp.sendRedirect(("/session/admin"));
+
+        //Test Commit/push
     }
 }
