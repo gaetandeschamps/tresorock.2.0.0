@@ -139,6 +139,20 @@ function changementName(input){
 }
 
 /**
+ * Cette méthode permet d'ajuster la valeur de l'erreur de caisse en fonction de la recette du Fichier et de la recette de la caisse
+ */
+function updateErreurCaisse(elem){
+    //console.log(elem.value);
+    if(elem.value==null){
+        document.getElementById("eFichier").setAttribute("value", 0);
+    }else{
+        var rCaisse = elem.value;
+        var rFichier = document.getElementById("rFichier").getAttribute("value");
+        document.getElementById("eFichier").setAttribute("value", rCaisse-rFichier);
+    }
+}
+
+/**
  * Cette requeteAJAX en GET permet d'afficher, si c'est le cas, la soirée qui est en cours
  */
 function affichageSoireeEnCours() {
@@ -176,8 +190,20 @@ function affichageSoireeEnCours() {
 
         CreerEvenement();
 
+        //affection de la recette
+        document.getElementById("rFichier").setAttribute("value", sec.recette);
 
+        //affectation de l'erreur de caisse
+        document.getElementById("eFichier").setAttribute("value", sec.erreurCaisse);
 
+        //affectation du nb de pers venues
+        document.getElementById("nbPers").setAttribute("value", sec.nbClients);
+
+        //affectation du nb d'abos venus
+        document.getElementById("nbAbos").setAttribute("value", sec.nbClientsAbos);
+
+        //affectation du theme
+        document.getElementById("themeSoiree").setAttribute("value", sec.theme);
 
     }
 
