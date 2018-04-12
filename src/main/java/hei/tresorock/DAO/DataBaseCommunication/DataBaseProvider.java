@@ -11,17 +11,16 @@ public class DataBaseProvider {
     public static DataSource getdataBase() {
         if (dataBase == null) {
             dataBase = new MysqlDataSource();
-            dataBase.setServerName("localhost");
+            dataBase.setServerName("dz8959rne9lumkkw.chr7pe7iynqr.eu-west-1.rds.amazonaws.com");
             dataBase.setPort(3306);
-            dataBase.setDatabaseName("tresorock");
-            dataBase.setUser("root");
-            dataBase.setPassword("root");
+            dataBase.setDatabaseName("ho7qiler6fglm8yv");
+            dataBase.setUser("lpyjpurrzfa0p8yh");
+            dataBase.setPassword("a70ghinfzetl55uf");
         }
 
         return dataBase;
     }
 /**
-
     private static MysqlDataSource dataBase;
 
     public static DataSource getdataBase() {
