@@ -85,13 +85,13 @@
 						<p>Si vous souhaitez rechercher une soirée en particulier, effectuer une recherche sur la page à l'aide du raccourci Ctrl + F (Windows) ou Cmd + F (Mac). </p>
 				    	<select class="custom-select" size="10" th:each="soiree : ${soireesList}">
 				    		<!--rajouter lien sur chacune des dates avec boutons modifier/supprimer-->
-							<option style="margin-bottom: 0.5em; font-weight: bold; font-size: large; th:text="${'DATE SOIREE : ' + soiree.dateSoiree}"></option>
+							<option style="margin-bottom: 0.5em; font-weight: bold; font-size: large;" th:text="${'DATE SOIREE : ' + soiree.dateSoiree}"></option>
 
-							<option style="margin-bottom: 0.5em; font-weight: bold; font-size: large; th:text="${'Recette Caisse : ' + soiree.recetteCaisse}">Recette de la Caisse :</option>
+							<option style="margin-bottom: 0.5em; font-weight: bold; font-size: large;" th:text="${'Recette Caisse : ' + soiree.recetteCaisse}">Recette de la Caisse :</option>
 
-							<option style="margin-bottom: 0.5em; font-weight: bold; font-size: large; th:text="${'Erreur Caisse : '  + soiree.erreurCaisse}"></option>
+							<option style="margin-bottom: 0.5em; font-weight: bold; font-size: large;" th:text="${'Erreur Caisse : '  + soiree.erreurCaisse}"></option>
 
-							<option style="margin-bottom: 0.5em; font-weight: bold; font-size: large; th:text="${'Theme de la soirée (si existant): '+soiree.themeSoiree}"></option>
+							<option style="margin-bottom: 0.5em; font-weight: bold; font-size: large;" th:text="${'Theme de la soirée (si existant): '+soiree.themeSoiree}"></option>
 						</select>
 					</div>
 
