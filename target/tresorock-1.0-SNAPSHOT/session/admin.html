@@ -47,29 +47,29 @@
 							 	    <span class="input-group-addon" for="dateSoiree">Date</span>
 							 		<input class="form-control" type="date" name="dateSoiree" id="example-date-input" onchange="CreerEvenement();">
 							  	</div>
-							  	<div class="input-group col-lg-offset-4" id="suite">
-								    <span class="input-group-addon" id="span" for="recetteCaisse">Recette Caisse</span>
-								    <input style="width:100%" type="number" class="form-control" placeholder="0.00 €" name="recetteCaisse" id="recetteCaisse">
+								<div class="input-group" id="suite">
+									<span class="input-group-addon" id="span">Recette Totale</span>
+									<input type="number" class="form-control" id="rCaisse" name="recetteCaisse" placeholder="0.00 €" onblur="updateErreurCaisse(this);">
 								</div>
 								<div class="input-group" id="suite2">
-								    <span class="input-group-addon" id="span">Recette Totale</span>
-								    <input type="number" class="form-control" placeholder="0.00 €">
+								    <span class="input-group-addon" id="span">Recette Fichier</span>
+								    <input type="number" class="form-control" id="rFichier" placeholder="0.00 €">
 								</div>
 								<div class="input-group" id="suite3">
 								    <span class="input-group-addon" id="span">Erreur Caisse</span>
-								    <input type="number" class="form-control" placeholder="0.00 €" name="erreurCaisse">
+								    <input type="number" class="form-control" id="eFichier" placeholder="0.00 €" name="erreurCaisse">
 								</div>
 								<div class="input-group" id="suite4">
 								    <span class="input-group-addon" id="span">Nombre de personnes venues à l'évènement</span>
-								    <input type="number" class="form-control" placeholder="0 personnes">
+								    <input type="number" class="form-control" id="nbPers" placeholder="0 personnes">
 								</div>
 								<div class="input-group" id="suite5">
 								    <span class="input-group-addon" id="span">Nombre d'abonnés venus à l'évènement</span>
-								    <input type="number" class="form-control" placeholder="0 abonnés">
+								    <input type="number" class="form-control" id="nbAbos" placeholder="0 abonnés">
 								</div>
 								<div class="input-group" id="suite6">
 								    <span class="input-group-addon" id="span" for="themeSoiree">Thème de l'évènement</span>
-								    <input type="text" class="form-control" placeholder="Thème..." name="themeSoiree" id="themeSoiree">
+								    <input type="text" class="form-control" id="themeSoiree" placeholder="Thème..." name="themeSoiree">
 								</div>
 								<div id="suite7">
 									<button type="submit" class="btn btn-dark center-block" id="btnValider" onclick="OnClick()">Finaliser</button>
@@ -83,19 +83,17 @@
 				    	<h3>MODE ADMIN</h3>
 						<p>Voici le résumé des soirées passées.</p>
 						<p>Si vous souhaitez rechercher une soirée en particulier, effectuer une recherche sur la page à l'aide du raccourci Ctrl + F (Windows) ou Cmd + F (Mac). </p>
-				    	<select class="custom-select" size="10" th:each="soiree : ${soireesList}">
+				    	<select style="padding-bottom: 6em;" class="custom-select" size="3" th:each="soiree : ${soireesList}">
 				    		<!--rajouter lien sur chacune des dates avec boutons modifier/supprimer-->
-							<option style="margin-top: 3em; margin-bottom: 0.5em; font-weight: bold; font-size: large;" th:text="${'DATE SOIREE : ' + soiree.dateSoiree}"></option>
+							<option style="margin-top:1em; margin-bottom: 0.5em; font-weight: bold; font-size: large" th:text="${'DATE SOIREE : ' + soiree.dateSoiree}"></option>
 
-							<option style="margin-bottom: 0.5em; font-weight: bold; font-size: large;" th:text="${'Recette Caisse : ' + soiree.recetteCaisse}">Recette de la Caisse :</option>
+							<option style="margin-bottom: 0.5em; font-weight: bold; font-size: large" th:text="${'Recette Caisse : ' + soiree.recetteCaisse}">Recette de la Caisse :</option>
 
-							<option style="margin-bottom: 0.5em; font-weight: bold; font-size: large;" th:text="${'Erreur Caisse : '  + soiree.erreurCaisse}"></option>
+							<option style="margin-bottom: 0.5em; font-weight: bold; font-size: large" th:text="${'Erreur Caisse : '  + soiree.erreurCaisse}"></option>
 
-							<option style="margin-bottom: 0.5em; font-weight: bold; font-size: large;" th:text="${'Theme de la soirée (si existant): '+soiree.themeSoiree}"></option>
-
+							<option style="margin-bottom: 0.5em; font-weight: bold; font-size: large" th:text="${'Theme de la soirée (si existant): '+soiree.themeSoiree}"></option>
 						</select>
 					</div>
-
 				    <div id="menu3" class="tab-pane fade">
 				    	<h3>MODE ADMIN</h3>
 				    	<p>Consulter l'historique des soirées.</p>
