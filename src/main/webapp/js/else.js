@@ -143,7 +143,8 @@ function updateErreurCaisse(elem){
     }else{
         var rCaisse = elem.value;
         var rFichier = document.getElementById("rFichier").getAttribute("value");
-        console.log(rCaisse+" - "+rFichi);
+        console.log(rCaisse+" - "+rFichier);
+        var eCaisse=rCaisse-rFichier;
         document.getElementById("eFichier").setAttribute("value", eCaisse);
     }
 }

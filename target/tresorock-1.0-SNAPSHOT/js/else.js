@@ -143,7 +143,8 @@ function updateErreurCaisse(elem){
     }else{
         var rCaisse = elem.value;
         var rFichier = document.getElementById("rFichier").getAttribute("value");
-        console.log(rCaisse+" - "+rFichi);
+        console.log(rCaisse+" - "+rFichier);
+        var eCaisse=rCaisse-rFichier;
         document.getElementById("eFichier").setAttribute("value", eCaisse);
     }
 }
@@ -233,8 +234,11 @@ affichageSoireeEnCours();
 function erreurTEA() {
 
     var urlString = location.href;
+    var urlEnd="";
+    urlEnd = urlString.substr(urlString.length-4, urlString.length);
     console.log(urlString);
-    if(urlString=="http://localhost:8080/accueil?e=1"){
+    console.log(urlEnd);
+    if(urlEnd=="?e=1"){
         alert("Veuillez d'abord créer une soirée dans le mode Admin !");
     }
 
