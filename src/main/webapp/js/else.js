@@ -234,7 +234,7 @@ function erreurTEA() {
 
     var urlString = location.href;
     console.log(urlString);
-    if(urlString=="http://localhost:8080/accueil?e=1"){
+    if(urlString==urlString + "?e=1"){
         alert("Veuillez d'abord créer une soirée dans le mode Admin !");
     }
 
