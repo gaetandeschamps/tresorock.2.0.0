@@ -34,6 +34,13 @@ public class ModeTEA extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        //accès uniquement si un évènement a été créé côté ADMIN
+
+        //IMPLEMENTER METHODE  TOP
+        int soireeActive = ListeSoiree.getInstance().getSoireeEnCoursId();
+
+        //s'il y a une soirée active alors la page est chargée, sinon l'utilisateur est redirigé à l'accueuil
+        if(soireeActive!=-1) {
             ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(req.getServletContext());
             templateResolver.setPrefix("/WEB-INF/templates/");
             templateResolver.setSuffix(".html");
@@ -47,11 +54,9 @@ public class ModeTEA extends HttpServlet {
             templateEngine.setTemplateResolver(templateResolver);
 
             templateEngine.process("tea", context, resp.getWriter());
-
-        //accès uniquement si un évènement a été créé côté ADMIN
-
-            //IMPLEMENTER METHODE  TOP
-
+        }else{
+            resp.sendRedirect("/accueil?e=1");
+        }
     }
 
     @Override

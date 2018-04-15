@@ -1,5 +1,6 @@
 package hei.tresorock.servlet;
 
+import com.google.gson.Gson;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * Classe permettant d'afficher la template Accueil.
@@ -32,7 +34,5 @@ public class AccueilServlet extends HttpServlet {
         templateEngine.setTemplateResolver(templateResolver);
 
         templateEngine.process("accueil", context, resp.getWriter());
-
-        //FUCK THIS DAY -- oh yeah
     }
 }
