@@ -33,19 +33,20 @@ public class ModeTEA extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(req.getServletContext());
-        templateResolver.setPrefix("/WEB-INF/templates/");
-        templateResolver.setSuffix(".html");
 
-        WebContext context = new WebContext(req,resp,req.getServletContext());
+            ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(req.getServletContext());
+            templateResolver.setPrefix("/WEB-INF/templates/");
+            templateResolver.setSuffix(".html");
 
-        List<Client> clients = ListeSoiree.getInstance().listClient();
-        context.setVariable("clientsList", clients);
+            WebContext context = new WebContext(req, resp, req.getServletContext());
 
-        TemplateEngine templateEngine = new TemplateEngine();
-        templateEngine.setTemplateResolver(templateResolver);
+            List<Client> clients = ListeSoiree.getInstance().listClient();
+            context.setVariable("clientsList", clients);
 
-        templateEngine.process("tea", context, resp.getWriter());
+            TemplateEngine templateEngine = new TemplateEngine();
+            templateEngine.setTemplateResolver(templateResolver);
+
+            templateEngine.process("tea", context, resp.getWriter());
 
         //accès uniquement si un évènement a été créé côté ADMIN
 
