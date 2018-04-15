@@ -233,8 +233,11 @@ affichageSoireeEnCours();
 function erreurTEA() {
 
     var urlString = location.href;
+    var urlEnd="";
+    urlEnd = urlString.substr(urlString.length-4, urlString.length);
     console.log(urlString);
-    if(urlString==urlString + "?e=1"){
+    console.log(urlEnd);
+    if(urlEnd=="?e=1"){
         alert("Veuillez d'abord créer une soirée dans le mode Admin !");
     }
 
