@@ -34,7 +34,7 @@ public class DataBaseProvider {
         return dataBase;
     }
     */
-/*
+/**
     private static MysqlDataSource dataBase;
 
     public static DataSource getdataBase() {
@@ -48,5 +48,5 @@ public class DataBaseProvider {
         }
         return dataBase;
     }
-*/
+**/
 }
