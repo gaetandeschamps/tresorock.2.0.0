@@ -28,4 +28,16 @@ public class DonneesBilanSoirees extends HttpServlet{
         writerResponse.append(bilanSoireeJson);
     }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException{
+        /*
+        //s'il on met à jour une soirée, alors faire :
+        String action = req.getParameter("action");
+        if(!action.equals("add")) {
+            ListeSoiree.getInstance().updateActif();
+        }*/
+
+
+    }
+
 }

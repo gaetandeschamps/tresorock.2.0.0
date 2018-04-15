@@ -78,7 +78,7 @@ public class SoireeDaoImpl implements SoireeDao {
 
     /**
      * Méthode permettant de récupérer l'ID de la soirée en cours
-     * @return l'id de la soirée en cours, -1 si erreur !
+     * @return l'id de la soirée en cours, -1 si il n'en existe pas !
      */
     public int getSoireeEnCoursId (){
         int idSoiree=-1;

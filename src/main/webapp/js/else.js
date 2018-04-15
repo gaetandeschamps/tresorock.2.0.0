@@ -81,12 +81,7 @@ function ClickSoiree(){
 };
 
 function OnClick(){
-    var x = document.forms["myForm"]["nomClient"].value;
-    if (x == "") {
-        alert("Name must be filled out");
-        return false;
-    }else{
-    alert("Merci, votre évènement est créé.")};
+    alert("Merci, votre évènement est créé.");
 };
 
 function NouveauClientNormal(input){
@@ -148,8 +143,16 @@ function updateErreurCaisse(elem){
     }else{
         var rCaisse = elem.value;
         var rFichier = document.getElementById("rFichier").getAttribute("value");
-        document.getElementById("eFichier").setAttribute("value", rCaisse-rFichier);
+        console.log(rCaisse+" - "+rFichi);
+        document.getElementById("eFichier").setAttribute("value", eCaisse);
     }
+}
+
+/**
+ * Cette méthode permet de modifier le bouton de création d'une soirée en fonction de l'existance d'une soirée en cours
+ */
+function updateBoutonValidation(){
+    alert("Clôture de la soirée !");
 }
 
 /**
@@ -162,49 +165,64 @@ function affichageSoireeEnCours() {
 
     affichageSoireeEnCoursRequest.onload = function(){
         console.log(this.response);
+        if (this.response.idSoiree!=-1) { //si on récupère une soirée active
+            var sec = this.response;
+            var date;
+            var mois;
+            var jour;
 
-        var sec=this.response;
-        var date;
-        var mois;
-        var jour;
+            //ajustmement du mois
+            if (0 < sec.dateSoiree.month && sec.dateSoiree.month < 10) {
+                mois = "0" + sec.dateSoiree.month;
+            } else {
+                mois = sec.dateSoiree.month;
+            }
+            //ajustement du jour
+            if (0 < sec.dateSoiree.day && sec.dateSoiree.day < 10) {
+                jour = "0" + sec.dateSoiree.day;
+            } else {
+                jour = sec.dateSoiree.day;
+            }
 
-        //ajustmement du mois
-        if (0<sec.dateSoiree.month && sec.dateSoiree.month<10){
-            mois = "0" + sec.dateSoiree.month;
-        }else{
-            mois = sec.dateSoiree.month;
+            //concaténation
+            date = sec.dateSoiree.year + "-" + mois + "-" + jour;
+            console.log("Affectation des \"0\" : " + date);
+
+            //affectation au l'id du formulaire
+            document.getElementById("example-date-input").setAttribute("value", date);
+
+            CreerEvenement();
+
+            //affection de la recette
+            document.getElementById("rFichier").setAttribute("value", sec.recette);
+
+            //affectation de l'erreur de caisse
+            document.getElementById("eFichier").setAttribute("value", sec.erreurCaisse);
+
+            //affectation du nb de pers venues
+            document.getElementById("nbPers").setAttribute("value", sec.nbClients);
+
+            //affectation du nb d'abos venus
+            document.getElementById("nbAbos").setAttribute("value", sec.nbClientsAbos);
+
+            //affectation du theme
+            document.getElementById("themeSoiree").setAttribute("value", sec.theme);
+
+            //changementdeDoPOST
+            document.getElementsByName("action")[0].setAttribute("value", "modifierAct");
+
+            //bouton valider affiche "Finaliser" et remet actif=0
+            document.getElementsByName("action")[0].setAttribute("value", "changerAct");
+            var nouveaubouton = document.getElementById("suite7").firstElementChild.cloneNode(false);
+            console.log(nouveaubouton);
+            document.getElementById("suite7").appendChild(nouveaubouton);
+            var liste = document.getElementById("suite7").getElementsByTagName('button');
+            document.getElementById("suite7").removeChild(liste[0]);
+            document.getElementById("suite7").firstElementChild.setAttribute("id", "newbouton");
+            document.getElementById("suite7").firstElementChild.innerHTML="Finaliser";
+            document.getElementById("suite7").firstElementChild.setAttribute("onclick", "updateBoutonValidation()");
+
         }
-        //ajustement du jour
-        if (0<sec.dateSoiree.day && sec.dateSoiree.day<10){
-            jour = "0" + sec.dateSoiree.day;
-        }else{
-            jour = sec.dateSoiree.day;
-        }
-
-        //concaténation
-        date = sec.dateSoiree.year + "-" + mois + "-" + jour;
-        console.log("Affectation des \"0\" : " + date);
-
-        //affectation au l'id du formulaire
-        document.getElementById("example-date-input").setAttribute("value", date);
-
-        CreerEvenement();
-
-        //affection de la recette
-        document.getElementById("rFichier").setAttribute("value", sec.recette);
-
-        //affectation de l'erreur de caisse
-        document.getElementById("eFichier").setAttribute("value", sec.erreurCaisse);
-
-        //affectation du nb de pers venues
-        document.getElementById("nbPers").setAttribute("value", sec.nbClients);
-
-        //affectation du nb d'abos venus
-        document.getElementById("nbAbos").setAttribute("value", sec.nbClientsAbos);
-
-        //affectation du theme
-        document.getElementById("themeSoiree").setAttribute("value", sec.theme);
-
     }
 
     affichageSoireeEnCoursRequest.send();

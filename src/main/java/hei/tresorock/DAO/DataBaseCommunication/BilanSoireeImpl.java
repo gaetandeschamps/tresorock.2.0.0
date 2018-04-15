@@ -15,6 +15,9 @@ public class BilanSoireeImpl implements BilanSoireeDao{
         BilanSoiree bilanSoiree = new BilanSoiree(idSoiree, LocalDate.ofEpochDay(0), -1.0, -1.0,
                 -1, -1, "Erreur de récupération du bilan de la soirée");
 
+        if(idSoiree==-1){
+            return bilanSoiree;
+        }
 
         //récupération de la recette et du nombre de clients venus
         String query = "SELECT sum(PrixPaye) AS RecetteCaisse, count(IdClient) AS NombreClients FROM Participe WHERE IdSoiree=?;";
@@ -65,4 +68,20 @@ public class BilanSoireeImpl implements BilanSoireeDao{
 
         return bilanSoiree;
     }
+
+    @Override
+    public BilanSoiree updateActif() {
+        String query = "UPDATE Soiree SET Actif=0 WHERE Actif=1;";
+        try (Connection connection = DataBaseProvider.getdataBase().getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)){
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return null;
+    }
+
+
 }

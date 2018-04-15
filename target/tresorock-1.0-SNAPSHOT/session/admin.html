@@ -43,40 +43,40 @@
 				    	<h3>MODE ADMIN</h3>
 				    	<center>
 					    	<form method="post" id="formulaireCreation" class="input-group center-block text-center">
+									<input type="hidden" name="action" value="add"/>
 						    	<div class="input-group">
 							 	    <span class="input-group-addon" for="dateSoiree">Date</span>
 							 		<input class="form-control" type="date" name="dateSoiree" id="example-date-input" onchange="CreerEvenement();">
 							  	</div>
 								<div class="input-group" id="suite">
 									<span class="input-group-addon" id="span">Recette Totale</span>
-									<input type="number" class="form-control" id="rCaisse" name="recetteCaisse" placeholder="0.00 €" onblur="updateErreurCaisse(this);">
+									<input type="number" class="form-control" value="0" id="rCaisse" name="recetteCaisse" placeholder="0.00 €" onblur="updateErreurCaisse(this);">
 								</div>
 								<div class="input-group" id="suite2">
 								    <span class="input-group-addon" id="span">Recette Fichier</span>
-								    <input type="number" class="form-control" id="rFichier" placeholder="0.00 €">
+								    <input type="number" class="form-control" value="0" id="rFichier" placeholder="0.00 €">
 								</div>
 								<div class="input-group" id="suite3">
 								    <span class="input-group-addon" id="span">Erreur Caisse</span>
-								    <input type="number" class="form-control" id="eFichier" placeholder="0.00 €" name="erreurCaisse">
+								    <input type="number" class="form-control" value="0" id="eFichier" placeholder="0.00 €" name="erreurCaisse">
 								</div>
 								<div class="input-group" id="suite4">
 								    <span class="input-group-addon" id="span">Nombre de personnes venues à l'évènement</span>
-								    <input type="number" class="form-control" id="nbPers" placeholder="0 personnes">
+								    <input type="number" class="form-control" value="0" id="nbPers" placeholder="0 personnes">
 								</div>
 								<div class="input-group" id="suite5">
 								    <span class="input-group-addon" id="span">Nombre d'abonnés venus à l'évènement</span>
-								    <input type="number" class="form-control" id="nbAbos" placeholder="0 abonnés">
+								    <input type="number" class="form-control" value="0" id="nbAbos" placeholder="0 abonnés">
 								</div>
 								<div class="input-group" id="suite6">
 								    <span class="input-group-addon" id="span" for="themeSoiree">Thème de l'évènement</span>
-								    <input type="text" class="form-control" id="themeSoiree" placeholder="Thème..." name="themeSoiree">
+								    <input type="text" class="form-control" value="" id="themeSoiree" placeholder="Thème..." name="themeSoiree">
 								</div>
 								<div id="suite7">
-									<button type="submit" class="btn btn-dark center-block" id="btnValider" onclick="OnClick()">Finaliser</button>
+									<button type="submit" class="btn btn-dark center-block" id="btnValider" onclick="OnClick()">Valider</button>
 								</div>
-								
+							</form>
 						</center>
-					  	</form>
 				    </div>
 
 				    <div id="menu2" class="tab-pane fade" style="margin-bottom: 10em">
@@ -99,6 +99,7 @@
 				    	<p>Consulter l'historique des soirées.</p>
 				    </div>
 				</div>
+			</div>
 		</div>
 	
 		<footer class="blockquote-footer fixed-bottom text-center">

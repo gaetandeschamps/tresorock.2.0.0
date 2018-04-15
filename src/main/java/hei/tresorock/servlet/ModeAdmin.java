@@ -65,30 +65,43 @@ public class ModeAdmin extends HttpServlet {
         Double erreurCaisse=null;
         String themeSoiree=null;
         Boolean actif = true;
+        String action = null;
 
-        try {
-            String dateSoireeAsString = req.getParameter("dateSoiree");
-            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            dateSoiree = LocalDate.parse(dateSoireeAsString, dateFormat);
-
-            recetteCaisse = Double.parseDouble(req.getParameter("recetteCaisse"));
-            erreurCaisse = Double.parseDouble(req.getParameter("erreurCaisse"));
-            themeSoiree = req.getParameter("themeSoiree");
-
+        try{
+            action = req.getParameter("action");
         }catch(Exception e){
             log(e.toString());
         }
 
-        //création d'une nouvelle soirée
-        Soiree newSoiree = new Soiree(null,dateSoiree,recetteCaisse,erreurCaisse,themeSoiree, actif);
-        try {
-            ListeSoiree.getInstance().addSoiree(newSoiree);
-        }catch (IllegalArgumentException e){
-            resp.sendRedirect("error");
-        }
-        //redirection page préc.
-        resp.sendRedirect(("/session/admin"));
+        //s'il on ajoute soirée alors faire :
+        if(action.equals("add")) {
+            try {
+                String dateSoireeAsString = req.getParameter("dateSoiree");
+                DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                dateSoiree = LocalDate.parse(dateSoireeAsString, dateFormat);
 
-        //Test Commit/push
+                recetteCaisse = Double.parseDouble(req.getParameter("recetteCaisse"));
+                erreurCaisse = Double.parseDouble(req.getParameter("erreurCaisse"));
+                themeSoiree = req.getParameter("themeSoiree");
+
+            } catch (Exception e) {
+                log(e.toString());
+            }
+
+            //création d'une nouvelle soirée
+            Soiree newSoiree = new Soiree(null, dateSoiree, recetteCaisse, erreurCaisse, themeSoiree, actif);
+            try {
+                ListeSoiree.getInstance().addSoiree(newSoiree);
+            } catch (IllegalArgumentException e) {
+                resp.sendRedirect("error");
+            }
+            //redirection page préc.
+            resp.sendRedirect(("/session/admin"));
+
+        }else if(action.equals("changerAct")) {
+            ListeSoiree.getInstance().updateActif();
+            //redirection page préc.
+            resp.sendRedirect(("/session/admin"));
+        }
     }
 }

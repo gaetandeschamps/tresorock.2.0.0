@@ -6,4 +6,6 @@ public interface BilanSoireeDao {
 
     public BilanSoiree getBilanSoiree(int idSoiree);
 
+    public BilanSoiree updateActif();
+
 }

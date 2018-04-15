@@ -124,5 +124,7 @@ public class ListeSoiree {
         return bilanSoireeDao.getBilanSoiree(idSoiree);
     }
 
+    public BilanSoiree updateActif() { return bilanSoireeDao.updateActif(); };
+
 
 }
